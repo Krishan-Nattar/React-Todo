@@ -22,13 +22,13 @@ class App extends React.Component {
         }
       ],
       input: "",
-      selected:[]
+      selected: []
     };
   }
 
-  handleAddClick=(event)=>{
+  handleAddClick = event => {
     event.preventDefault();
-    
+
     let current = Date.now();
     let task = this.state.input;
     let completed = false;
@@ -36,51 +36,58 @@ class App extends React.Component {
       task: task,
       id: current,
       completed: completed
-    }
+    };
 
     let currentData = this.state.data.slice();
     currentData.push(newObject);
-    this.setState({data: currentData});
-    
-  
-    this.setState({input: ""})
-  }
+    this.setState({ data: currentData });
 
-  handleClearClick=(event)=>{
+    this.setState({ input: "" });
+  };
+
+  handleClearClick = event => {
     event.preventDefault();
-    // console.log('clear click');
-    console.log(this.state.data);
-  }
-  handleInput =(e)=>{
-    this.setState({input: e.target.value})
-  }
-  handleItemClick=(e)=>{
+
+    let currentData = this.state.data.slice();
+    let newData = currentData.filter(item => {
+      if (item.completed == false) {
+        return item;
+      } 
+    });
+
+    this.setState({ data: newData });
+
+    // console.log(this.state.data);
+  };
+  handleInput = e => {
+    this.setState({ input: e.target.value });
+  };
+  handleItemClick = e => {
     let clickId = e.target.dataset.id;
 
     let currentData = this.state.data.slice();
-    let newData = currentData.map(item=>{
-      if(item.id != clickId){
+    let newData = currentData.map(item => {
+      if (item.id != clickId) {
         return item;
       } else {
-        return {...item, completed: !item.completed}
+        return { ...item, completed: !item.completed };
       }
-    })
+    });
 
-    this.setState({data: newData});
-
-  }
+    this.setState({ data: newData });
+  };
 
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <Todo 
-        list={this.state.data} 
-        handleAddClick={this.handleAddClick} 
-        handleClearClick={this.handleClearClick} 
-        inputText={this.state.input} 
-        handleInput={this.handleInput} 
-        handleItemClick={this.handleItemClick}
+        <Todo
+          list={this.state.data}
+          handleAddClick={this.handleAddClick}
+          handleClearClick={this.handleClearClick}
+          inputText={this.state.input}
+          handleInput={this.handleInput}
+          handleItemClick={this.handleItemClick}
         />
       </div>
     );
