@@ -10,7 +10,10 @@ class Todo extends Component {
         TODO
         <br />
         <br />
-        <TodoList list={this.props.list} />
+        <TodoList 
+        list={this.props.list} 
+        handleItemClick={this.props.handleItemClick}
+        />
         <br />
         <TodoForm 
         handleAddClick={this.props.handleAddClick} 

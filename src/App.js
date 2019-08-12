@@ -21,7 +21,8 @@ class App extends React.Component {
           completed: false
         }
       ],
-      input: ""
+      input: "",
+      selected:[]
     };
   }
 
@@ -47,10 +48,26 @@ class App extends React.Component {
 
   handleClearClick=(event)=>{
     event.preventDefault();
-    console.log('clear click');
+    // console.log('clear click');
+    console.log(this.state.data);
   }
   handleInput =(e)=>{
     this.setState({input: e.target.value})
+  }
+  handleItemClick=(e)=>{
+    let clickId = e.target.dataset.id;
+
+    let currentData = this.state.data.slice();
+    let newData = currentData.map(item=>{
+      if(item.id != clickId){
+        return item;
+      } else {
+        return {...item, completed: !item.completed}
+      }
+    })
+
+    this.setState({data: newData});
+
   }
 
   render() {
@@ -63,6 +80,7 @@ class App extends React.Component {
         handleClearClick={this.handleClearClick} 
         inputText={this.state.input} 
         handleInput={this.handleInput} 
+        handleItemClick={this.handleItemClick}
         />
       </div>
     );
