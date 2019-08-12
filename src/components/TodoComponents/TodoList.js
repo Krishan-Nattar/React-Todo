@@ -13,33 +13,34 @@ class TodoList extends React.Component {
       <div>
         {!this.props
           ? null
-          : this.props.list.map(item => {
-              return (
-                <div
-                  className={item.completed ? "line" : ""}
-                  key={item.id}
-                  data-id={item.id}
-                  onClick={e => this.props.handleItemClick(e)}
-                >
-                  {item.task}
-                </div>
-              )
-            }).filter(item=>{
-                if(item.props.children.includes(this.props.searchValue) ==true || this.props.searchValue == ""){
-                    return item;
+          : this.props.list
+              .map(item => {
+                return (
+                  <div
+                    className={item.completed ? "line" : ""}
+                    key={item.id}
+                    data-id={item.id}
+                    onClick={e => this.props.handleItemClick(e)}
+                  >
+                    {item.task}
+                  </div>
+                );
+              })
+              .filter(item => {
+                if (
+                  item.props.children.includes(this.props.searchValue) ==
+                    true ||
+                  this.props.searchValue == ""
+                ) {
+                  return item;
                 }
-            })
-            
-            }
-
-
+              })}
       </div>
     );
   }
 }
 
 export default TodoList;
-
 
 // {!this.props
 //     ? null
@@ -57,5 +58,5 @@ export default TodoList;
 //               </div>
 //             );
 //       };
-        
+
 //       })}
