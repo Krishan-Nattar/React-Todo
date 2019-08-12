@@ -52,12 +52,10 @@ class App extends React.Component {
     let newData = currentData.filter(item => {
       if (item.completed == false) {
         return item;
-      } 
+      }
     });
 
     this.setState({ data: newData });
-
-    // console.log(this.state.data);
   };
   handleInput = e => {
     this.setState({ input: e.target.value });
