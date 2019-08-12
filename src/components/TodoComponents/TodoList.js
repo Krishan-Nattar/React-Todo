@@ -28,7 +28,7 @@ class TodoList extends React.Component {
               })
               .filter(item => {
                 if (
-                  item.props.children.includes(this.props.searchValue) ==
+                  item.props.children.toLowerCase().includes(this.props.searchValue.toLowerCase()) ==
                     true ||
                   this.props.searchValue == ""
                 ) {
