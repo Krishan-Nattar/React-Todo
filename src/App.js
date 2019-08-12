@@ -39,12 +39,9 @@ class App extends React.Component {
 
     let currentData = this.state.data.slice();
     currentData.push(newObject);
-
-    // console.log(currentData);
     this.setState({data: currentData});
     
-    
-    // console.log(this.state.input, current, completed);
+  
     this.setState({input: ""})
   }
 
@@ -53,7 +50,6 @@ class App extends React.Component {
     console.log('clear click');
   }
   handleInput =(e)=>{
-    // console.log(e.target.value)
     this.setState({input: e.target.value})
   }
 
