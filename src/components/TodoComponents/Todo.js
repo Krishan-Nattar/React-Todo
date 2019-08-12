@@ -13,6 +13,7 @@ class Todo extends Component {
         <TodoList 
         list={this.props.list} 
         handleItemClick={this.props.handleItemClick}
+        searchValue={this.props.searchValue}
         />
         <br />
         <TodoForm 

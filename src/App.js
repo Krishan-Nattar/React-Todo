@@ -1,5 +1,6 @@
 import React from "react";
 import Todo from "./components/TodoComponents/Todo";
+import Search from './components/Search';
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -22,7 +23,7 @@ class App extends React.Component {
         }
       ],
       input: "",
-      selected: []
+      search: ""
     };
   }
 
@@ -60,6 +61,10 @@ class App extends React.Component {
   handleInput = e => {
     this.setState({ input: e.target.value });
   };
+
+  handleSearch = e =>{
+    this.setState({search: e.target.value});
+  }
   handleItemClick = e => {
     let clickId = e.target.dataset.id;
 
@@ -78,6 +83,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <Search searchValue={this.state.search} handleSearch={this.handleSearch} />
         <h2>Welcome to your Todo App!</h2>
         <Todo
           list={this.state.data}
@@ -86,6 +92,7 @@ class App extends React.Component {
           inputText={this.state.input}
           handleInput={this.handleInput}
           handleItemClick={this.handleItemClick}
+          searchValue={this.state.search}
         />
       </div>
     );
