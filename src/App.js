@@ -1,6 +1,8 @@
 import React from "react";
 import Todo from "./components/TodoComponents/Todo";
 import Search from './components/Search';
+import './App.css';
+
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -82,9 +84,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="full-app">
         <Search searchValue={this.state.search} handleSearch={this.handleSearch} />
-        <h2>Welcome to your Todo App!</h2>
+        <h2>To do...</h2>
         <Todo
           list={this.state.data}
           handleAddClick={this.handleAddClick}

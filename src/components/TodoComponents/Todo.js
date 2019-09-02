@@ -7,7 +7,6 @@ class Todo extends Component {
   render(props) {
     return (
       <div>
-        TODO
         <br />
         <br />
         <TodoList 

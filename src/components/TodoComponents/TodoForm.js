@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Input, Button } from 'semantic-ui-react'
 
 class TodoForm extends Component {
   constructor() {
@@ -6,13 +7,13 @@ class TodoForm extends Component {
   }
   render(props) {
     return (
-      <form>
-        To Do Form
-        <input type="text" onChange={(e)=>this.props.handleInput(e)} value={this.props.inputText} />
-        <button onClick={e => this.props.handleAddClick(e)}>Add Item</button>
-        <button onClick={e => this.props.handleClearClick(e)}>
-          Clear Finished Items
-        </button>
+      <form className="todo-form">
+        <Input type="text" placeholder="New Item" onChange={(e)=>this.props.handleInput(e)} value={this.props.inputText} />
+        <div className="form-buttons">
+        <Button primary onClick={e => this.props.handleAddClick(e)}>Add Item</Button>
+        
+        <Button negative onClick={e => this.props.handleClearClick(e)}>Clear Finished Items</Button>
+        </div>
       </form>
     );
   }

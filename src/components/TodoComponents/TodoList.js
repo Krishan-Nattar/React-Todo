@@ -10,7 +10,7 @@ class TodoList extends React.Component {
   }
   render(props) {
     return (
-      <div>
+      <div className="todo-list">
         {!this.props
           ? null
           : this.props.list
