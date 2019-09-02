@@ -41,22 +41,3 @@ class TodoList extends React.Component {
 }
 
 export default TodoList;
-
-// {!this.props
-//     ? null
-//     : this.props.list.map().filter(item => {
-
-//       if(item.task.includes(this.props.searchValue)){
-//           return (
-//               <div
-//                 className={item.completed ? "line" : ""}
-//                 key={item.id}
-//                 data-id={item.id}
-//                 onClick={e => this.props.handleItemClick(e)}
-//               >
-//                 {item.task}
-//               </div>
-//             );
-//       };
-
-//       })}
