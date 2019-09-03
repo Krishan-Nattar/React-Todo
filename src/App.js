@@ -5,25 +5,25 @@ import './App.css';
 
 
 class App extends React.Component {
-  // you will need a place to store your state in this component.
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
 
   constructor() {
     super();
-    this.state = {
-      data: [
-        {
-          task: "Organize Garage",
-          id: 1528817077286,
-          completed: false
-        },
-        {
-          task: "Bake Cookies",
-          id: 1528817084358,
-          completed: false
+    const browserData = window.localStorage.getItem('data');
+    const parseData = JSON.parse(browserData);
+    let newData;
+    if(parseData){
+      newData = parseData.filter(item => {
+        if (item.completed == false) {
+          return item;
         }
-      ],
+      });
+    }
+    
+    console.log(parseData);
+    this.state = {
+      data: 
+        (newData) ? newData : []
+      ,
       input: "",
       search: ""
     };
@@ -43,6 +43,7 @@ class App extends React.Component {
 
     let currentData = this.state.data.slice();
     currentData.push(newObject);
+    window.localStorage.setItem('data', JSON.stringify(currentData));
     this.setState({ data: currentData });
 
     this.setState({ input: "" });
@@ -57,7 +58,7 @@ class App extends React.Component {
         return item;
       }
     });
-
+    window.localStorage.setItem('data', JSON.stringify(currentData));
     this.setState({ data: newData });
   };
   handleInput = e => {
